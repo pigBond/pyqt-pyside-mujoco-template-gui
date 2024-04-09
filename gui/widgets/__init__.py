@@ -69,3 +69,5 @@ from . py_line_edit import PyLineEdit
 # PY TABLE WIDGET
 # ///////////////////////////////////////////////////////////////
 from . py_table_widget import PyTableWidget
+
+from .py_card import PyCard

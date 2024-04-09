@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagesYegzfT.ui'
+## Form generated from reading UI file 'main_pagesMNKetC.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.3
 ##
@@ -137,29 +137,18 @@ class Ui_MainPages(object):
         self.page_show.setStyleSheet(u"QFrame {\n"
 "	font-size: 16pt;\n"
 "}")
-        self.page_3_layout = QVBoxLayout(self.page_show)
-        self.page_3_layout.setObjectName(u"page_3_layout")
-        self.empty_page_label = QLabel(self.page_show)
-        self.empty_page_label.setObjectName(u"empty_page_label")
-        self.empty_page_label.setFont(font)
-        self.empty_page_label.setAlignment(Qt.AlignCenter)
+        self.page_show_layout = QVBoxLayout(self.page_show)
+        self.page_show_layout.setObjectName(u"page_show_layout")
+        self.mdiArea_show = QMdiArea(self.page_show)
+        self.mdiArea_show.setObjectName(u"mdiArea_show")
 
-        self.page_3_layout.addWidget(self.empty_page_label)
+        self.page_show_layout.addWidget(self.mdiArea_show)
 
         self.pages.addWidget(self.page_show)
         self.page_evaluate = QWidget()
         self.page_evaluate.setObjectName(u"page_evaluate")
         self.verticalLayout_2 = QVBoxLayout(self.page_evaluate)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.empty_page_label_2 = QLabel(self.page_evaluate)
-        self.empty_page_label_2.setObjectName(u"empty_page_label_2")
-        font1 = QFont()
-        font1.setPointSize(26)
-        self.empty_page_label_2.setFont(font1)
-        self.empty_page_label_2.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_2.addWidget(self.empty_page_label_2)
-
         self.pages.addWidget(self.page_evaluate)
 
         self.main_pages_layout.addWidget(self.pages)
@@ -167,7 +156,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(3)
+        self.pages.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MainPages)
@@ -179,7 +168,5 @@ class Ui_MainPages(object):
         self.title_label.setText(QCoreApplication.translate("MainPages", u"Custom Widgets Page", None))
         self.description_label.setText(QCoreApplication.translate("MainPages", u"Here will be all the custom widgets, they will be added over time on this page.\n"
 "I will try to always record a new tutorial when adding a new Widget and updating the project on Patreon before launching on GitHub and GitHub after the public release.", None))
-        self.empty_page_label.setText(QCoreApplication.translate("MainPages", u"Empty Page", None))
-        self.empty_page_label_2.setText(QCoreApplication.translate("MainPages", u"evaluate page", None))
     # retranslateUi
 

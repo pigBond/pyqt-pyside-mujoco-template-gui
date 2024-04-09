@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>240</width>
+    <width>243</width>
     <height>600</height>
    </rect>
   </property>
@@ -32,7 +32,7 @@
    <item>
     <widget class="QStackedWidget" name="menus">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="menu_1">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -253,6 +253,17 @@ Add Qt Widgets or your custom widgets here.</string>
          </property>
          <property name="text">
           <string>这里是 menu.train 的训练参数</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="menu_show">
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QPushButton" name="testButton">
+         <property name="text">
+          <string>testButton</string>
          </property>
         </widget>
        </item>

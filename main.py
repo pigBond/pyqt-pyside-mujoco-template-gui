@@ -140,7 +140,7 @@ class MainWindow(QMainWindow):
             if btn.objectName() != "btn_close_left_column":
                 MainFunctions.set_left_column_menu(
                     self,
-                    menu=self.ui.left_column.menus.menu_train,
+                    menu=self.ui.left_column.menus.menu_show,
                     title="已有模型/理想行走轨迹",
                     icon_path=Functions.set_svg_icon("icon_emoticons.svg")
                 )

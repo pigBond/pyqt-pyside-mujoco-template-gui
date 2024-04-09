@@ -45,6 +45,8 @@ from . ui_main import *
 # ///////////////////////////////////////////////////////////////
 from . functions_main_window import *
 
+from gui.uis.cards.ui_py_card import Ui_Card 
+
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////
 class SetupMainWindow:
@@ -230,6 +232,26 @@ class SetupMainWindow:
         themes = Themes()
         self.themes = themes.items
 
+        # TODO:这里是后面可以用的代码
+        # show部分----------------------------------------------------------------------
+        # page show
+        def addCard():
+            subWindow = QMdiSubWindow()
+            subWindow.setWindowTitle(f"子窗口 {1}")
+            subWindow.resize(350, 350)
+            ui_card = Ui_Card()
+            widget = QWidget()
+            ui_card.setupUi(widget)
+            subWindow.setWidget(widget)
+            # 将子窗口添加到MDI区域
+            self.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
+            subWindow.show()
+
+        # left_column
+        self.ui.left_column.menus.testButton.clicked.connect(addCard)
+        #-------------------------------------------------------------------------------
+
+
         # TODO：添加好看的按钮
         # ADD CUSTOM BUTTON
         self.btn_1 = PyPushButton(
@@ -242,7 +264,36 @@ class SetupMainWindow:
         )
         self.btn_1.setMaximumHeight(40)
         # ADD TO LAYOUT
-        self.ui.left_column.menus.btn_1_layout.addWidget(self.btn_1)
+        # self.ui.left_column.menus.btn_1_layout.addWidget(self.btn_1)
+
+
+        # ICON BUTTON 2
+        self.icon_button_2 = PyIconButton(
+            icon_path = Functions.set_svg_icon("icon_add_user.svg"),
+            parent = self,
+            app_parent = self.ui.central_widget,
+            tooltip_text = "BTN with tooltip",
+            width = 40,
+            height = 40,
+            radius = 8,
+            dark_one = self.themes["app_color"]["dark_one"],
+            icon_color = self.themes["app_color"]["icon_color"],
+            icon_color_hover = self.themes["app_color"]["icon_hover"],
+            icon_color_pressed = self.themes["app_color"]["white"],
+            icon_color_active = self.themes["app_color"]["icon_active"],
+            bg_color = self.themes["app_color"]["dark_one"],
+            bg_color_hover = self.themes["app_color"]["dark_three"],
+            bg_color_pressed = self.themes["app_color"]["green"],
+        )
+        # self.ui.left_column.menus.btn_1_layout.addWidget(self.icon_button_2)
+
+
+        self.test_card = PyCard()
+        self.ui.load_pages.verticalLayout_2.addWidget(self.test_card)
+
+
+        #////////////////////////////////////////////////////////////////////////
+
 
         # ADD TOGGLE BUTTON
         self.toggle_1=PyToggle(
@@ -272,6 +323,25 @@ class SetupMainWindow:
         self.button.clicked.connect(print_text)
         self.ui.load_pages.logo_layout.addWidget(self.line_edit)
         self.ui.load_pages.logo_layout.addWidget(self.button)
+
+
+        # PAGE WINDOW
+        # page train
+
+        # page show -Qmdiwindow
+        # subWindow = QMdiSubWindow()
+        # subWindow.setWindowTitle(f"子窗口 {1}")
+        # subWindow.resize(350, 350)
+        # ui_card = Ui_Card()
+        # widget = QWidget()
+        # ui_card.setupUi(widget)
+        # subWindow.setWidget(widget)
+        # # 将子窗口添加到MDI区域
+        # self.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
+        # subWindow.show()
+
+        #page evaluate
+
 
 
         # ///////////////////////////////////////////////////////////////

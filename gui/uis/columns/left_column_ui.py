@@ -22,7 +22,7 @@ class Ui_LeftColumn(object):
     def setupUi(self, LeftColumn):
         if not LeftColumn.objectName():
             LeftColumn.setObjectName(u"LeftColumn")
-        LeftColumn.resize(240, 600)
+        LeftColumn.resize(243, 600)
         self.main_pages_layout = QVBoxLayout(LeftColumn)
         self.main_pages_layout.setSpacing(0)
         self.main_pages_layout.setObjectName(u"main_pages_layout")
@@ -124,13 +124,23 @@ class Ui_LeftColumn(object):
         self.verticalLayout_3.addWidget(self.label)
 
         self.menus.addWidget(self.menu_train)
+        self.menu_show = QWidget()
+        self.menu_show.setObjectName(u"menu_show")
+        self.verticalLayout_4 = QVBoxLayout(self.menu_show)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.testButton = QPushButton(self.menu_show)
+        self.testButton.setObjectName(u"testButton")
+
+        self.verticalLayout_4.addWidget(self.testButton)
+
+        self.menus.addWidget(self.menu_show)
 
         self.main_pages_layout.addWidget(self.menus)
 
 
         self.retranslateUi(LeftColumn)
 
-        self.menus.setCurrentIndex(2)
+        self.menus.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(LeftColumn)
@@ -144,5 +154,6 @@ class Ui_LeftColumn(object):
         self.label_3.setText(QCoreApplication.translate("LeftColumn", u"This is just an example menu.\n"
 "Add Qt Widgets or your custom widgets here.", None))
         self.label.setText(QCoreApplication.translate("LeftColumn", u"\u8fd9\u91cc\u662f menu.train \u7684\u8bad\u7ec3\u53c2\u6570", None))
+        self.testButton.setText(QCoreApplication.translate("LeftColumn", u"testButton", None))
     # retranslateUi
 
