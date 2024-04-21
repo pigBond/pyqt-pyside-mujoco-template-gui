@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'left_columniSMfrV.ui'
+## Form generated from reading UI file 'left_columnDnLLEw.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.3
 ##
@@ -9,6 +9,7 @@
 ################################################################################
 
 from qt_core import *
+
 
 
 class Ui_LeftColumn(object):
@@ -121,6 +122,11 @@ class Ui_LeftColumn(object):
         self.menu_show.setObjectName(u"menu_show")
         self.verticalLayout_4 = QVBoxLayout(self.menu_show)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.gridLayout_show = QGridLayout()
+        self.gridLayout_show.setObjectName(u"gridLayout_show")
+
+        self.verticalLayout_4.addLayout(self.gridLayout_show)
+
         self.testButton = QPushButton(self.menu_show)
         self.testButton.setObjectName(u"testButton")
 

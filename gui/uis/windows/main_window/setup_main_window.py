@@ -343,6 +343,9 @@ class SetupMainWindow:
         #page evaluate
 
 
+        self.multiCheckbox_show=PyMultiCheck()
+        self.ui.left_column.menus.gridLayout_show.addWidget(self.multiCheckbox_show)
+
 
         # ///////////////////////////////////////////////////////////////
         # END - EXAMPLE CUSTOM WIDGETS

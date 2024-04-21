@@ -71,3 +71,5 @@ from . py_line_edit import PyLineEdit
 from . py_table_widget import PyTableWidget
 
 from .py_card import PyCard
+
+from .py_multi_checkbox import PyMultiCheck
