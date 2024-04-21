@@ -235,20 +235,22 @@ class SetupMainWindow:
         # TODO:这里是后面可以用的代码
         # show部分----------------------------------------------------------------------
         # page show
-        def addCard():
-            subWindow = QMdiSubWindow()
-            subWindow.setWindowTitle(f"子窗口 {1}")
-            subWindow.resize(350, 350)
-            ui_card = Ui_Card()
-            widget = QWidget()
-            ui_card.setupUi(widget)
-            subWindow.setWidget(widget)
-            # 将子窗口添加到MDI区域
-            self.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
-            subWindow.show()
+        # def addCard():
+        #     subWindow = QMdiSubWindow()
+        #     subWindow.setWindowTitle(f"子窗口 {1}")
+        #     subWindow.resize(350, 350)
+        #     # ui_card = Ui_Card()
+        #     # widget = QWidget()
+        #     # ui_card.setupUi(widget)
+        #     # subWindow.setWidget(widget)
+        #     py_card=PyCard()
+        #     subWindow.setWidget(py_card)
+        #     # 将子窗口添加到MDI区域
+        #     self.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
+        #     subWindow.show()
 
         # left_column
-        self.ui.left_column.menus.testButton.clicked.connect(addCard)
+        # self.ui.left_column.menus.testButton.clicked.connect(addCard)
         #-------------------------------------------------------------------------------
 
 
@@ -288,9 +290,6 @@ class SetupMainWindow:
         # self.ui.left_column.menus.btn_1_layout.addWidget(self.icon_button_2)
 
 
-        self.test_card = PyCard()
-        self.ui.load_pages.verticalLayout_2.addWidget(self.test_card)
-
 
         #////////////////////////////////////////////////////////////////////////
 
@@ -328,22 +327,50 @@ class SetupMainWindow:
         # PAGE WINDOW
         # page train
 
-        # page show -Qmdiwindow
-        # subWindow = QMdiSubWindow()
-        # subWindow.setWindowTitle(f"子窗口 {1}")
-        # subWindow.resize(350, 350)
-        # ui_card = Ui_Card()
-        # widget = QWidget()
-        # ui_card.setupUi(widget)
-        # subWindow.setWidget(widget)
-        # # 将子窗口添加到MDI区域
-        # self.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
-        # subWindow.show()
-
         #page evaluate
+        
+        #SHOW部分
+        # ///////////////////////////////////////////////////////////////
+        json_data=[
+            {
+                "model": "A1_run_on_B1",
+                "algorithm": "A1",
+                "environment": "B1",
+                "task": "run",
+            },
+            {
+                "model": "A2_run_on_B1",
+                "algorithm": "A2",
+                "environment": "B1",
+                "task": "run",
+            },
+            {
+                "model": "A1_run_on_B2",
+                "algorithm": "A1",
+                "environment": "B2",
+                "task": "run",
+            },
+            {
+                "model": "X2_run_on_Y2",
+                "algorithm": "X2",
+                "environment": "Y2",
+                "task": "run",
+            },
+            {
+                "model": "Z3_walk_on_W3",
+                "algorithm": "Z3",
+                "environment": "W3",
+                "task": "walk",
+            },
+            {
+                "model": "V4_run_on_U4",
+                "algorithm": "V4",
+                "environment": "U4",
+                "task": "run",
+            },
+        ]
 
-
-        self.multiCheckbox_show=PyMultiCheck()
+        self.multiCheckbox_show=PyMultiCheck(self,json_data)
         self.ui.left_column.menus.gridLayout_show.addWidget(self.multiCheckbox_show)
 
 

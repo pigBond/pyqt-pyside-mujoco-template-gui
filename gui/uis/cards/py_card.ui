@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>350</height>
+    <width>301</width>
+    <height>250</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>350</width>
-    <height>350</height>
+    <width>301</width>
+    <height>250</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>350</width>
-    <height>350</height>
+    <width>301</width>
+    <height>250</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -34,23 +34,22 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <layout class="QVBoxLayout" name="label_info_layout">
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <pointsize>22</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>这里是info区</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <layout class="QVBoxLayout" name="label_info_layout"/>
        </item>
        <item>
         <widget class="QFrame" name="frame">
+         <property name="minimumSize">
+          <size>
+           <width>136</width>
+           <height>147</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>136</width>
+           <height>147</height>
+          </size>
+         </property>
          <property name="styleSheet">
           <string notr="true">background:lightblue</string>
          </property>
@@ -65,29 +64,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="btn_operation_layout">
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>PushButton</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <layout class="QHBoxLayout" name="btn_operation_layout"/>
      </item>
     </layout>
    </item>

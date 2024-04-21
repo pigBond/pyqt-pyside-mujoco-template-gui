@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'left_columnDnLLEw.ui'
+## Form generated from reading UI file 'left_columnPndtdE.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-
 from qt_core import *
-
-
 
 class Ui_LeftColumn(object):
     def setupUi(self, LeftColumn):
@@ -127,11 +124,6 @@ class Ui_LeftColumn(object):
 
         self.verticalLayout_4.addLayout(self.gridLayout_show)
 
-        self.testButton = QPushButton(self.menu_show)
-        self.testButton.setObjectName(u"testButton")
-
-        self.verticalLayout_4.addWidget(self.testButton)
-
         self.menus.addWidget(self.menu_show)
 
         self.main_pages_layout.addWidget(self.menus)
@@ -153,6 +145,5 @@ class Ui_LeftColumn(object):
         self.label_3.setText(QCoreApplication.translate("LeftColumn", u"This is just an example menu.\n"
 "Add Qt Widgets or your custom widgets here.", None))
         self.label.setText(QCoreApplication.translate("LeftColumn", u"\u8fd9\u91cc\u662f menu.train \u7684\u8bad\u7ec3\u53c2\u6570", None))
-        self.testButton.setText(QCoreApplication.translate("LeftColumn", u"testButton", None))
     # retranslateUi
 

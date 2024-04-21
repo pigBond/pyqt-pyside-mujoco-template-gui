@@ -1,54 +1,20 @@
 from qt_core import *
 from .multiCheckBoxListWidget import MultiCheckBoxListWidget
+from gui.widgets import *
+
 
 class PyMultiCheck(QWidget):
-    def __init__(self):
+    def __init__(self,main_window,json_data):
         super().__init__()
+        self.main_window=main_window
         self.filterConditions = {
             "algorithm": None,
             "environment": None,
-            "task": None
+            "task": None,
         }  # 定义筛选条件的字典
         self.multiCheckBoxListWidget = None
 
-        self.jsonData = [
-            {
-                "model": "A1_run_on_B1",
-                "algorithm": "A1",
-                "environment": "B1",
-                "task": "run",
-            },
-            {
-                "model": "A2_run_on_B1",
-                "algorithm": "A2",
-                "environment": "B1",
-                "task": "run",
-            },
-            {
-                "model": "A1_run_on_B2",
-                "algorithm": "A1",
-                "environment": "B2",
-                "task": "run",
-            },
-            {
-                "model": "X2_run_on_Y2",
-                "algorithm": "X2",
-                "environment": "Y2",
-                "task": "run",
-            },
-            {
-                "model": "Z3_walk_on_W3",
-                "algorithm": "Z3",
-                "environment": "W3",
-                "task": "walk",
-            },
-            {
-                "model": "V4_run_on_U4",
-                "algorithm": "V4",
-                "environment": "U4",
-                "task": "run",
-            },
-        ]
+        self.jsonData = json_data
         self.__initUi()
 
     def updateFilterConditions(self, algorithm=None, environment=None, task=None):
@@ -91,13 +57,12 @@ class PyMultiCheck(QWidget):
         self.multiCheckBoxListWidget.filterItems(
             algorithm=self.filterConditions["algorithm"],
             environment=self.filterConditions["environment"],
-            task=self.filterConditions["task"]
+            task=self.filterConditions["task"],
         )
-
 
     def __initUi(self):
 
-    #-------------------------------------复选框------------------------------------------------------
+        # -------------------------------------复选框------------------------------------------------------
         # 全选复选框
         allCheckBox = QCheckBox("Check all")
         # 算法筛选复选框
@@ -108,11 +73,11 @@ class PyMultiCheck(QWidget):
                 lambda state, algo=algorithm: self.updateFilterConditions(
                     algorithm=algo if state == 2 else None,
                     environment=self.filterConditions["environment"],
-                    task=self.filterConditions["task"]
+                    task=self.filterConditions["task"],
                 )
             )
             algorithmCheckBoxes.append(checkBox)
-        
+
         # 环境筛选复选框
         environmentCheckBoxes = []
         for environment in set(item["environment"] for item in self.jsonData):
@@ -121,11 +86,11 @@ class PyMultiCheck(QWidget):
                 lambda state, env=environment: self.updateFilterConditions(
                     algorithm=self.filterConditions["algorithm"],
                     environment=env if state == 2 else None,
-                    task=self.filterConditions["task"]
+                    task=self.filterConditions["task"],
                 )
             )
             environmentCheckBoxes.append(checkBox)
-        
+
         # 任务筛选复选框
         taskCheckBoxes = []
         for task in set(item["task"] for item in self.jsonData):
@@ -134,36 +99,46 @@ class PyMultiCheck(QWidget):
                 lambda state, t=task: self.updateFilterConditions(
                     algorithm=self.filterConditions["algorithm"],
                     environment=self.filterConditions["environment"],
-                    task=t if state == 2 else None
+                    task=t if state == 2 else None,
                 )
             )
             taskCheckBoxes.append(checkBox)
-    #----------------------------------------------------------------------------------------------
-
+        # ----------------------------------------------------------------------------------------------
 
         # 测试输出代码
-        getAllChecked_btn = QPushButton("Get All Checked")
+        getAllChecked_btn = QPushButton("Get Checked")
         unCheckAll_btn = QPushButton("Uncheck ALl")
+        deleteAllCard_btn = QPushButton("Delete ALl")
 
         self.multiCheckBoxListWidget = MultiCheckBoxListWidget()
 
         self.multiCheckBoxListWidget.addItems(self.jsonData)
 
-
-    #-------------------------------------按钮click------------------------------------------------------
+        # -------------------------------------按钮click------------------------------------------------------
         def on_button_2_clicked():
             allCheckBox.setCheckState(Qt.Unchecked)
-            for checkBox in algorithmCheckBoxes + environmentCheckBoxes + taskCheckBoxes:
+            for checkBox in (
+                algorithmCheckBoxes + environmentCheckBoxes + taskCheckBoxes
+            ):
                 checkBox.setCheckState(Qt.Unchecked)
             self.multiCheckBoxListWidget.uncheckAllRows()
 
         def on_button_clicked():
             self.confirmAction()
 
+        def closeAllSubWindows():
+            allCheckBox.setCheckState(Qt.Unchecked)
+            # 获取MDI区域内的所有子窗口
+            subWindows = self.main_window.ui.load_pages.mdiArea_show.subWindowList()
+            
+            # 遍历所有子窗口并关闭它们
+            for window in subWindows:
+                window.close()
+
         getAllChecked_btn.clicked.connect(on_button_clicked)
         unCheckAll_btn.clicked.connect(on_button_2_clicked)
-    #---------------------------------------------------------------------------------------------------
-
+        deleteAllCard_btn.clicked.connect(closeAllSubWindows)
+        # ---------------------------------------------------------------------------------------------------
 
         # # 连接全选复选框的状态变化信号到相应的槽函数
         # allCheckBox.stateChanged.connect(
@@ -178,23 +153,7 @@ class PyMultiCheck(QWidget):
         # 连接全选复选框的状态变化信号到相应的槽函数
         allCheckBox.stateChanged.connect(allCheckBox_changed)
 
-
         self.multiCheckBoxListWidget.getAllItems()
-        
-
-        # # 布局设置
-        # lay = QVBoxLayout()
-        # lay.addWidget(allCheckBox)
-        # for checkBox in algorithmCheckBoxes:
-        #     lay.addWidget(checkBox)
-        # for checkBox in environmentCheckBoxes:
-        #     lay.addWidget(checkBox)
-        # for checkBox in taskCheckBoxes:
-        #     lay.addWidget(checkBox)
-        # lay.addWidget(self.multiCheckBoxListWidget)
-        # lay.addWidget(getAllChecked_btn)
-        # lay.addWidget(unCheckAll_btn)
-        # self.setLayout(lay)
 
         # 布局设置
         lay = QGridLayout()
@@ -221,11 +180,12 @@ class PyMultiCheck(QWidget):
 
         lay.addWidget(self.multiCheckBoxListWidget, 30, 0, 1, 3)  # 列表控件跨三列
         lay.addWidget(getAllChecked_btn, 31, 0)
-        lay.addWidget(unCheckAll_btn, 31, 2)
-        
+        lay.addWidget(unCheckAll_btn, 31, 1)
+        lay.addWidget(deleteAllCard_btn, 31, 2)
+
         # 设置列间的水平间距
         lay.setHorizontalSpacing(10)  # 这里的10可以根据实际需要进行调整
-        
+
         self.setLayout(lay)
 
     def addCheckBoxesInGrid(self, checkBoxes, layout, start_row, items_per_row):
@@ -237,7 +197,7 @@ class PyMultiCheck(QWidget):
             if (index + 1) % items_per_row == 0:
                 row += 1
                 column = 0
-    
+
     def addSeparator(self, layout, row):
         separator = QFrame()
         separator.setFrameShape(QFrame.HLine)
@@ -249,7 +209,8 @@ class PyMultiCheck(QWidget):
         checked_data = self.multiCheckBoxListWidget.getCheckedRows()
         print("Checked items:", checked_data)
         for i in checked_data:
-            print("-- ", self.jsonData[i])
+            # print("-- ", self.jsonData[i])
+            self.addCard(self.jsonData[i])
 
     def confirmAction(self):
         reply = QMessageBox.question(
@@ -263,3 +224,17 @@ class PyMultiCheck(QWidget):
             self.getAllChecked_btn_function()
         else:
             print("操作取消")
+
+    # TODO：这里需要传入card需要展示的信息，使用数据列表循环使用addCard一次性添加多个窗口
+    def addCard(self,card_info):
+        # print("card_info = ",card_info)
+        subWindow = QMdiSubWindow()
+        subWindow.setWindowTitle(f"模型：{card_info['model']}")
+        # subWindow.resize(250, 250)
+        subWindow.setFixedSize(310, 250)
+        py_card = PyCard(card_info,self.main_window)
+        subWindow.setWidget(py_card)
+        # 将子窗口添加到MDI区域
+        self.main_window.ui.load_pages.mdiArea_show.addSubWindow(subWindow)
+        subWindow.show()
+

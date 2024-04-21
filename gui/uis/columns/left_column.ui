@@ -261,11 +261,7 @@ Add Qt Widgets or your custom widgets here.</string>
      <widget class="QWidget" name="menu_show">
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QPushButton" name="testButton">
-         <property name="text">
-          <string>testButton</string>
-         </property>
-        </widget>
+        <layout class="QGridLayout" name="gridLayout_show"/>
        </item>
       </layout>
      </widget>

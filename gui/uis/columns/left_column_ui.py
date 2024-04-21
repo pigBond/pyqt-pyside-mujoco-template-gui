@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QLabel, QPushButton, QSizePolicy,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QPushButton,
+    QSizePolicy, QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_LeftColumn(object):
     def setupUi(self, LeftColumn):
@@ -128,10 +128,10 @@ class Ui_LeftColumn(object):
         self.menu_show.setObjectName(u"menu_show")
         self.verticalLayout_4 = QVBoxLayout(self.menu_show)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.testButton = QPushButton(self.menu_show)
-        self.testButton.setObjectName(u"testButton")
+        self.gridLayout_show = QGridLayout()
+        self.gridLayout_show.setObjectName(u"gridLayout_show")
 
-        self.verticalLayout_4.addWidget(self.testButton)
+        self.verticalLayout_4.addLayout(self.gridLayout_show)
 
         self.menus.addWidget(self.menu_show)
 
@@ -154,6 +154,5 @@ class Ui_LeftColumn(object):
         self.label_3.setText(QCoreApplication.translate("LeftColumn", u"This is just an example menu.\n"
 "Add Qt Widgets or your custom widgets here.", None))
         self.label.setText(QCoreApplication.translate("LeftColumn", u"\u8fd9\u91cc\u662f menu.train \u7684\u8bad\u7ec3\u53c2\u6570", None))
-        self.testButton.setText(QCoreApplication.translate("LeftColumn", u"testButton", None))
     # retranslateUi
 
